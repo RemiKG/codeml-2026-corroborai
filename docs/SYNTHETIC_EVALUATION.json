@@ -1,0 +1,962 @@
+{
+  "case_sha256": "e1cd686b6ff86adbeb9613b6f58d4e40dd4a18c34ff95070e072d1726f099526",
+  "provenance": "Owner-authored synthetic labels and queries, frozen before the first model evaluation. No sponsor vocabulary, external annotator or sponsor truth. Candidate labels are not query copies; spelling/context perturbations are deliberate.",
+  "model": {
+    "method": "character TF-IDF + cosine",
+    "fit": "unsupervised, local reference labels only",
+    "ngrams": [
+      3,
+      5
+    ],
+    "threshold": 0.3,
+    "margin": 0.03,
+    "baseline": "difflib.SequenceMatcher, same candidates and abstention policy",
+    "authority": "Investigation suggestions only; never changes a verdict."
+  },
+  "results": {
+    "development": {
+      "summary": {
+        "tfidf": {
+          "positive_queries": 2,
+          "no_unique_match_queries": 1,
+          "correct_top1_suggestions": 2,
+          "expected_in_top3": 2,
+          "correct_abstentions": 1,
+          "wrong_suggestions": 0,
+          "total_abstentions": 1
+        },
+        "difflib": {
+          "positive_queries": 2,
+          "no_unique_match_queries": 1,
+          "correct_top1_suggestions": 2,
+          "expected_in_top3": 2,
+          "correct_abstentions": 0,
+          "wrong_suggestions": 1,
+          "total_abstentions": 0
+        }
+      },
+      "cases": [
+        {
+          "query": "Services finaciers",
+          "expected": "Services financiers",
+          "type": "deletion",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.855602
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.399081
+              },
+              {
+                "label": "Service à la clientèle",
+                "score": 0.274587
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.972973
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.75
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.611111
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Technicien informatique",
+          "expected": "Technicien en informatique",
+          "type": "omission",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Technicien en informatique",
+                "score": 0.978789
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.462706
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.130578
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Technicien en informatique",
+                "score": 0.938776
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.755556
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.423077
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "volcan sous-marin",
+          "expected": null,
+          "type": "out_of_scope",
+          "tfidf": {
+            "status": "abstain",
+            "candidates": [
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.108544
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.102655
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.0
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": true,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.48
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.4
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.391304
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": false,
+            "wrong_suggestion": true
+          }
+        }
+      ],
+      "rules_only_candidate_suggestions": 0
+    },
+    "evaluation": {
+      "summary": {
+        "tfidf": {
+          "positive_queries": 12,
+          "no_unique_match_queries": 4,
+          "correct_top1_suggestions": 12,
+          "expected_in_top3": 12,
+          "correct_abstentions": 3,
+          "wrong_suggestions": 1,
+          "total_abstentions": 3
+        },
+        "difflib": {
+          "positive_queries": 12,
+          "no_unique_match_queries": 4,
+          "correct_top1_suggestions": 12,
+          "expected_in_top3": 12,
+          "correct_abstentions": 1,
+          "wrong_suggestions": 3,
+          "total_abstentions": 1
+        }
+      },
+      "cases": [
+        {
+          "query": "Service financiere",
+          "expected": "Services financiers",
+          "type": "spelling",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.796622
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.480112
+              },
+              {
+                "label": "Service à la clientèle",
+                "score": 0.3563
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.918919
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.666667
+              },
+              {
+                "label": "Service à la clientèle",
+                "score": 0.65
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Services informatiqes",
+          "expected": "Services informatiques",
+          "type": "deletion",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services informatiques",
+                "score": 0.864157
+              },
+              {
+                "label": "Technicien en informatique",
+                "score": 0.400375
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.39513
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services informatiques",
+                "score": 0.976744
+              },
+              {
+                "label": "Technicien en informatique",
+                "score": 0.680851
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.65
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Service a la clientelle",
+          "expected": "Service à la clientèle",
+          "type": "accent_and_spelling",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Service à la clientèle",
+                "score": 0.917547
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.248465
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.234067
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Service à la clientèle",
+                "score": 0.888889
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.571429
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.488889
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Administration ressources humaine",
+          "expected": "Administration des ressources humaines",
+          "type": "omission",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.949233
+              },
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.485232
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.150013
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.929577
+              },
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.666667
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.37931
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Gestion des instalations",
+          "expected": "Gestion des installations",
+          "type": "deletion",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des installations",
+                "score": 0.894931
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.6334
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.219766
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des installations",
+                "score": 0.979592
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.782609
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.52
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Gestion operationnelle",
+          "expected": "Gestion des opérations",
+          "type": "morphology",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des opérations",
+                "score": 0.858387
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.434511
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.392021
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des opérations",
+                "score": 0.727273
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.595745
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.458333
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Technicien en informatiqe",
+          "expected": "Technicien en informatique",
+          "type": "deletion",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Technicien en informatique",
+                "score": 0.926516
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.373427
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.13589
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Technicien en informatique",
+                "score": 0.980392
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.680851
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.468085
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Analyste finance",
+          "expected": "Analyste financier",
+          "type": "morphology",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Analyste financier",
+                "score": 0.856759
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.280862
+              },
+              {
+                "label": "Spécialiste de la paie",
+                "score": 0.062666
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Analyste financier",
+                "score": 0.941176
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.571429
+              },
+              {
+                "label": "Spécialiste de la paie",
+                "score": 0.421053
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Conseiller ressources humaines",
+          "expected": "Conseiller en ressources humaines",
+          "type": "omission",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.982168
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.538134
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.042136
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.952381
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.676471
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.461538
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Superviseur des operation",
+          "expected": "Superviseur des opérations",
+          "type": "accent_and_morphology",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.949186
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.482868
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.157803
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.941176
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.638298
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.555556
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Coordonnateur formation",
+          "expected": "Coordonnateur de la formation",
+          "type": "omission",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.96581
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.154752
+              },
+              {
+                "label": "Technicien en informatique",
+                "score": 0.130361
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.884615
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.489796
+              },
+              {
+                "label": "Technicien en informatique",
+                "score": 0.408163
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Specialiste paie",
+          "expected": "Spécialiste de la paie",
+          "type": "accent_and_omission",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Spécialiste de la paie",
+                "score": 0.956624
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.058055
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.014311
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Spécialiste de la paie",
+                "score": 0.789474
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.529412
+              },
+              {
+                "label": "Gestion des opérations",
+                "score": 0.421053
+              }
+            ],
+            "top1_correct": true,
+            "top3_contains_expected": true,
+            "correct_abstention": false,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "astronomie tropicale",
+          "expected": null,
+          "type": "out_of_scope",
+          "tfidf": {
+            "status": "abstain",
+            "candidates": [
+              {
+                "label": "Service à la clientèle",
+                "score": 0.093954
+              },
+              {
+                "label": "Spécialiste de la paie",
+                "score": 0.089655
+              },
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.069012
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": true,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des opérations",
+                "score": 0.428571
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.368421
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.355556
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": false,
+            "wrong_suggestion": true
+          }
+        },
+        {
+          "query": "qzxw vbnm",
+          "expected": null,
+          "type": "out_of_scope",
+          "tfidf": {
+            "status": "abstain",
+            "candidates": [
+              {
+                "label": "Administration des ressources humaines",
+                "score": 0.0
+              },
+              {
+                "label": "Analyste financier",
+                "score": 0.0
+              },
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.0
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": true,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "abstain",
+            "candidates": [
+              {
+                "label": "Analyste financier",
+                "score": 0.148148
+              },
+              {
+                "label": "Conseiller en ressources humaines",
+                "score": 0.142857
+              },
+              {
+                "label": "Services financiers",
+                "score": 0.142857
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": true,
+            "wrong_suggestion": false
+          }
+        },
+        {
+          "query": "Services",
+          "expected": null,
+          "type": "ambiguous_fragment",
+          "tfidf": {
+            "status": "abstain",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.595278
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.573604
+              },
+              {
+                "label": "Service à la clientèle",
+                "score": 0.394667
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": true,
+            "wrong_suggestion": false
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Services financiers",
+                "score": 0.592593
+              },
+              {
+                "label": "Services informatiques",
+                "score": 0.533333
+              },
+              {
+                "label": "Service à la clientèle",
+                "score": 0.466667
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": false,
+            "wrong_suggestion": true
+          }
+        },
+        {
+          "query": "Gestion",
+          "expected": null,
+          "type": "ambiguous_fragment",
+          "tfidf": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des opérations",
+                "score": 0.654309
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.552282
+              },
+              {
+                "label": "Coordonnateur de la formation",
+                "score": 0.10381
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": false,
+            "wrong_suggestion": true
+          },
+          "difflib": {
+            "status": "suggestion",
+            "candidates": [
+              {
+                "label": "Gestion des opérations",
+                "score": 0.482759
+              },
+              {
+                "label": "Gestion des installations",
+                "score": 0.4375
+              },
+              {
+                "label": "Superviseur des opérations",
+                "score": 0.363636
+              }
+            ],
+            "top1_correct": false,
+            "top3_contains_expected": false,
+            "correct_abstention": false,
+            "wrong_suggestion": true
+          }
+        }
+      ],
+      "rules_only_candidate_suggestions": 0
+    }
+  },
+  "interpretation": "Synthetic reference retrieval, not independently annotated HR accuracy. Candidate suggestions supplement exact-rule review; baseline comparison does not imply superiority."
+}

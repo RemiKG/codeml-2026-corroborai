@@ -77,4 +77,4 @@ Implementation: Python, openpyxl, scikit-learn, NumPy/SciPy, standard-library HT
 
 If the browser cannot connect, run the CLI demo and open its Excel Investigation/Audit sheets. The public `demo/` inputs are synthetic and can be copied freely with this project; never replace them with the sponsor package. If a download URL expires after newer runs or a restart, compare again. Each server retains at most three runs in memory; restarting clears them. The local UI accepts at most 40 MB per request; individual XLSX and expanded sizes are bounded. This is a small-event prototype, not a production HR system.
 
-Final Devpost submission remains manual. An actual public repository link will be recorded during packaging, after payload inspection; no link is invented here.
+Source: [github.com/RemiKG/codeml-2026-corroborai](https://github.com/RemiKG/codeml-2026-corroborai). See the [English presentation](presentation/PRESENTATION.pdf), its [editable HTML](presentation/PRESENTATION.html), and the [synthetic evaluation output](docs/SYNTHETIC_EVALUATION.json). Final Devpost submission remains manual. The public slides and interface image use synthetic records only.
