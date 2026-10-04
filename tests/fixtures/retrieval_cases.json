@@ -1,0 +1,28 @@
+{
+  "provenance": "Owner-authored synthetic labels and queries, frozen before the first model evaluation. No sponsor vocabulary, external annotator or sponsor truth. Candidate labels are not query copies; spelling/context perturbations are deliberate.",
+  "frozen_policy": "Character ngrams 3-5, cosine; suggestion threshold 0.30 and margin 0.03. Compare difflib using the same candidate set. Thresholds are fixed before results, not tuned on this evaluation set.",
+  "candidates": ["Services financiers", "Services informatiques", "Service à la clientèle", "Administration des ressources humaines", "Gestion des installations", "Gestion des opérations", "Technicien en informatique", "Analyste financier", "Conseiller en ressources humaines", "Superviseur des opérations", "Coordonnateur de la formation", "Spécialiste de la paie"],
+  "development": [
+    {"query": "Services finaciers", "expected": "Services financiers", "type": "deletion"},
+    {"query": "Technicien informatique", "expected": "Technicien en informatique", "type": "omission"},
+    {"query": "volcan sous-marin", "expected": null, "type": "out_of_scope"}
+  ],
+  "evaluation": [
+    {"query": "Service financiere", "expected": "Services financiers", "type": "spelling"},
+    {"query": "Services informatiqes", "expected": "Services informatiques", "type": "deletion"},
+    {"query": "Service a la clientelle", "expected": "Service à la clientèle", "type": "accent_and_spelling"},
+    {"query": "Administration ressources humaine", "expected": "Administration des ressources humaines", "type": "omission"},
+    {"query": "Gestion des instalations", "expected": "Gestion des installations", "type": "deletion"},
+    {"query": "Gestion operationnelle", "expected": "Gestion des opérations", "type": "morphology"},
+    {"query": "Technicien en informatiqe", "expected": "Technicien en informatique", "type": "deletion"},
+    {"query": "Analyste finance", "expected": "Analyste financier", "type": "morphology"},
+    {"query": "Conseiller ressources humaines", "expected": "Conseiller en ressources humaines", "type": "omission"},
+    {"query": "Superviseur des operation", "expected": "Superviseur des opérations", "type": "accent_and_morphology"},
+    {"query": "Coordonnateur formation", "expected": "Coordonnateur de la formation", "type": "omission"},
+    {"query": "Specialiste paie", "expected": "Spécialiste de la paie", "type": "accent_and_omission"},
+    {"query": "astronomie tropicale", "expected": null, "type": "out_of_scope"},
+    {"query": "qzxw vbnm", "expected": null, "type": "out_of_scope"},
+    {"query": "Services", "expected": null, "type": "ambiguous_fragment"},
+    {"query": "Gestion", "expected": null, "type": "ambiguous_fragment"}
+  ]
+}

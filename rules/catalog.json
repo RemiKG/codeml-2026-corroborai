@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "accepted_mapping_signatures": [
+    "3cab6d54dd1f2362ea27724113b59bf9f5b9cc2f5a257b6b15b2ab514f3b4371",
+    "661faaf5f682ecc5fd46619e93768151e197cf7bc40ef55db2c171969bd737fb"
+  ],
+  "signature_scope": "SHA-256 of reviewed nonblank workbook cells including row/sheet identity, not a general rule-language interpreter. Unreviewed rule changes fail closed.",
+  "rules": [
+    {
+      "field": "givenName",
+      "source": "PrénomUsuel",
+      "id": "R01"
+    },
+    {
+      "field": "surname",
+      "source": "NomFamille",
+      "id": "R02"
+    },
+    {
+      "field": "onboardDate",
+      "source": "DateEmbaucheRécente",
+      "id": "R04"
+    },
+    {
+      "field": "personId",
+      "source": "Matricule",
+      "id": "R05"
+    },
+    {
+      "field": "siteName",
+      "source": "LibelléSite",
+      "id": "R06"
+    },
+    {
+      "field": "siteCode",
+      "source": "CodeSite",
+      "id": "R07"
+    },
+    {
+      "field": "divisionId",
+      "source": "CodeDirection",
+      "id": "R08"
+    },
+    {
+      "field": "divisionCode",
+      "source": "CodeImputation",
+      "id": "R10"
+    },
+    {
+      "field": "positionId",
+      "source": "CodeEmploi",
+      "id": "R11"
+    },
+    {
+      "field": "positionCode",
+      "source": "CodeEmploi",
+      "id": "R13"
+    },
+    {
+      "field": "payGradeId",
+      "source": "ÉchelleSalariale",
+      "id": "R20"
+    },
+    {
+      "field": "weeklyHoursOverride",
+      "source": "HeuresNormeHebdo",
+      "id": "R21"
+    },
+    {
+      "field": "dailyHoursOverride",
+      "source": "HeuresNormeQuotidienne",
+      "id": "R22"
+    },
+    {
+      "field": "contactEmail",
+      "source": "PrénomUsuel",
+      "id": "R03"
+    },
+    {
+      "field": "divisionName",
+      "source": "LibelléDirection",
+      "id": "R09"
+    },
+    {
+      "field": "positionName",
+      "source": "IntituléEmploi",
+      "id": "R12"
+    },
+    {
+      "field": "statusReasonCode",
+      "source": "CodeRaisonStatut",
+      "id": "R14"
+    },
+    {
+      "field": "expectedReturnDate",
+      "source": "DateRetourAnticipée",
+      "id": "R15"
+    },
+    {
+      "field": "detailedStatus",
+      "source": "CodeSuspensionAccès",
+      "id": "R16"
+    },
+    {
+      "field": "contractTypeCode",
+      "source": "CatégorieEmploi",
+      "id": "R17"
+    },
+    {
+      "field": "isPrimaryAssignment",
+      "source": "TypeAffectation",
+      "id": "R18"
+    },
+    {
+      "field": "isTemporaryAssignment",
+      "source": "TypeAffectation",
+      "id": "R18"
+    },
+    {
+      "field": "assignmentStartDate",
+      "source": "DateEntréePoste",
+      "id": "R19"
+    },
+    {
+      "field": "assignmentEndDate",
+      "source": "DateSortiePoste",
+      "id": "R23"
+    },
+    {
+      "field": "termEndDate",
+      "source": "DateSortiePoste",
+      "id": "R24"
+    }
+  ],
+  "clarification": "2026-10-03 8:15 PM: email code is Matricule/personId; destination prefix optional. Unknown prefix grammar remains explicit.",
+  "privacy": "No sponsor records or learned vocabulary in this catalog."
+}
