@@ -10,6 +10,8 @@ The included demonstration is **entirely synthetic**. Sponsor employee extracts,
 
 From this directory in PowerShell:
 
+On Windows, extract the ZIP into a short local path before selecting workbooks in the browser. Chromium can fail to read a deeply nested file even when Python can read it. If file selection reports that a requested file cannot be found, move the extracted public demo to a shorter path and select it again; no system setting change is required.
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
